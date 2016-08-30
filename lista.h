@@ -1,0 +1,1 @@
+//Archivo con estructuras y prototipos de funciones de lista enlazada

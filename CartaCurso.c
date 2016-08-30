@@ -1,0 +1,1 @@
+//funciones de configuracion de CartaCurso
