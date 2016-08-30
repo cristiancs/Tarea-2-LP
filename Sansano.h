@@ -15,5 +15,8 @@ char * nombre;
 int prioridad;
 void * mazo;
 };
+#define LARGONOMBREMAXIMO 20
 
+void iniciarPrograma(char*, struct Sansano*, struct Sansano*);
+void giveCards(struct Sansano*);
 #endif
