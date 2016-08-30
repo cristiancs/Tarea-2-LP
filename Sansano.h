@@ -9,4 +9,11 @@
 #include <string.h>
 
 #include "libraries/pcg-c-basic-0.9/pcg_variants.h"
+
+struct Sansano{
+char * nombre;
+int prioridad;
+void * mazo;
+};
+
 #endif
