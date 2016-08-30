@@ -3,10 +3,11 @@ CFLAGS=-Wall
 
 default: ejecutable
 
-ejecutable: CartaCurso.o Sansano.o Lista.o main.o
+ejecutable: pcg_basic.o CartaCurso.o Sansano.o lista.o main.o
+	$(GCC) $^ -o $@
 
-%.o %.c
-    $(GCC) $(FLAGS) -c $<
+%.o: %.c
+	$(GCC) $(FLAGS) -c $<
 
 clean:
-    rm *.o ejecutable
+	rm *.o ejecutable

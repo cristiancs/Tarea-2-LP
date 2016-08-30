@@ -1,6 +1,14 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include "main.h"
 
 int main(){
-    printf("Hola mundo");
-    return 0;
+    char NombreJugador[LARGONOMBREMAXIMO];
+    printf("Bienvenido a SansaStone, ¿Cual es su nombre? (Espacios no permitidos)\n");
+    scanf("%s", NombreJugador);
+    printf("Hola %s, tu prioridad inicial es de 4500", NombreJugador);
+
+
+
 }
