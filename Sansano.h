@@ -19,5 +19,4 @@ void * mazo;
 #define CARDSNUMBER 20
 void iniciarPrograma(char*, struct *, struct *);
 void giveCards(struct *, void * );
-void mazoOrdenado(void *);
 #endif

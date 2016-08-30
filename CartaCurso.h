@@ -9,4 +9,5 @@ typedef struct CartaCurso{
 	void (*aprobar)(void *, void *); //Los parametros son la carta y el jugador
 } CartaCurso;
 
+void crearMazo(void *, int*);
 #endif
