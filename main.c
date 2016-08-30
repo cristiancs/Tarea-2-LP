@@ -7,8 +7,11 @@ int main(){
     char *NombreJugador = malloc(sizeof(int) * LARGONOMBREMAXIMO);
     // Iniciar El programa y pedir el nombre
     iniciarPrograma(NombreJugador, Jugador, PC);
-
+    void* MazoOficial;
+    MazoOficial = malloc(sizeof(tLista));
+    //mazoOrdenado(MazoOficial);
     giveCards(Jugador);
+    //mazoOrdenado(MazoOficial);
     giveCards(PC);
     free(NombreJugador);
     free(Jugador);
