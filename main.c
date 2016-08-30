@@ -1,14 +1,13 @@
-#include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
 #include "main.h"
 
 int main(){
-    char NombreJugador[LARGONOMBREMAXIMO];
-    printf("Bienvenido a SansaStone, ¿Cual es su nombre? (Espacios no permitidos)\n");
-    scanf("%s", NombreJugador);
-    printf("Hola %s, tu prioridad inicial es de 4500", NombreJugador);
+    struct Sansano Jugador;
+    struct Sansano PC;
+    char *NombreJugador = malloc(sizeof(int) * LARGONOMBREMAXIMO);
+    // Iniciar El programa y pedir el nombre
+    iniciarPrograma(NombreJugador, Jugador, PC);
 
-
-
+    //giveCards(Jugador);
+    //giveCards(PC);
+    free(NombreJugador);
 }
