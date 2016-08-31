@@ -4,6 +4,7 @@
 #include "CartaCurso.h"
 
 void initialize(tLista *lista){
+    lista = (tLista *)malloc(sizeof(tLista));
     lista->size = 0;
     lista->pos_actual = 0;
 }
@@ -13,13 +14,16 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
         lista->head = (tNodo *)malloc(sizeof(tNodo));
         lista->head->next = NULL;
         lista->head->prev = NULL;
+        lista->head->carta = Carta;
         lista->size++;
     }
     else if (pos == 0){
-    	tNodo * aux = (tNodo *)malloc(sizeof(tNodo));
-    	aux->prev = NULL;
+        tNodo * aux = (tNodo *)malloc(sizeof(tNodo));
+        aux->prev = NULL;
         aux->next = lista->head;
         aux->next->prev = aux;
+        lista->head = aux;
+        lista->head->carta = Carta;
         lista->size++;
     }
     else if (pos == lista->size){
@@ -38,6 +42,7 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
         tNodo * actual = lista->head;
         while (i < pos-1){
             actual = actual->next;
+            i++;
         }
         tNodo * aux = (tNodo *)malloc(sizeof(tNodo));
         aux->carta = Carta;
@@ -76,18 +81,21 @@ void moveToPos(tLista *lista, unsigned int posicion){
     unsigned int i = 0;
     int absoluto = posicion - lista->pos_actual;
     if (absoluto > 0){
-        tNodo * aux = lista->head;
         while (i < posicion){
-            aux = aux->next;
+            lista->current = lista->current->next;
             lista->pos_actual++;
         }
     }
     else if (absoluto < 0){
-        tNodo * aux ;
+        while (i > posicion){
+            lista->current = lista->current->prev;
+            lista->pos_actual--;
+        }
     }
 }
 
 CartaCurso * getValue(tLista *lista){
+    return lista->current->carta;
 }
 
 void free_linked(tLista *base){
@@ -100,6 +108,15 @@ void free_linked(tLista *base){
 }
 
 int main(){
+    tLista lista;
+    initialize(&lista);
+    int i = 0;
+    while (i<10){
+        CartaCurso * prueba = (CartaCurso *)malloc(sizeof(CartaCurso));
+        prueba->ataque = i;
+        insertL(&lista, prueba, i);
+        i++;
+    }
     return 1;
 }
 
