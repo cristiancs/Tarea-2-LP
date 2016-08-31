@@ -55,14 +55,16 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
 }
 
 void removeL(tLista *lista, unsigned int posicion){
-    moveToPos(lista, posicion);
     if (posicion == 0){
         lista->head = lista->head->next;
         lista->head->prev = NULL;
         lista->size--;
-        lista->pos_actual--;
+        lista->current = lista->head;
+        lista->pos_actual = 0;
+        return;
     }
-    else if (posicion == lista->size - 1){
+    moveToPos(lista, posicion-1);
+    if (posicion == lista->size - 1){
         lista->current = lista->current->prev;
         lista->current->next = NULL;
         lista->size--;
@@ -73,23 +75,23 @@ void removeL(tLista *lista, unsigned int posicion){
         lista->current->next = aux->next;
         aux->next->prev = lista->current;
         lista->size--;
-        lista->pos_actual--;
     }
 }
 
 void moveToPos(tLista *lista, unsigned int posicion){
-    unsigned int i = 0;
     int absoluto = posicion - lista->pos_actual;
     if (absoluto > 0){
-        while (i < posicion){
+        while (absoluto > 0){
             lista->current = lista->current->next;
             lista->pos_actual++;
+            absoluto--;
         }
     }
     else if (absoluto < 0){
-        while (i > posicion){
+        while (absoluto < 0){
             lista->current = lista->current->prev;
             lista->pos_actual--;
+            absoluto++;
         }
     }
 }
@@ -117,6 +119,11 @@ int main(){
         insertL(&lista, prueba, i);
         i++;
     }
-    return 1;
+    CartaCurso * prueba = (CartaCurso *)malloc(sizeof(CartaCurso));
+    prueba->ataque = 100;
+    insertL(&lista, prueba, 5);
+    removeL(&lista, 4);
+    removeL(&lista, 2);
+    //printf("hola");
 }
 
