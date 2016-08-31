@@ -3,25 +3,25 @@
 void crearMazo(void * MazoOficial, int* cartas) {
 
 
-    enum {MATE: 1, FISICA: 4, LP: 2, PROGRA: 6, ED: 3, EDD: 4};
+    enum {MATE= 1, FISICA= 4, LP= 2, PROGRA= 6, ED= 3, EDD= 4};
 
     for (int i = 0; i < MATE; ++i) {
-        insertarL(MazoOficial, cartas[0]);
+        insertL(MazoOficial, cartas[0]);
     }
     for (int i = 0; i < FISICA; ++i) {
-        insertarL(MazoOficial, cartas[1]);
+        insertL(MazoOficial, cartas[1]);
     }
     for (int i = 0; i < LP; ++i) {
-        insertarL(MazoOficial, cartas[2]);
+        insertL(MazoOficial, cartas[2]);
     }
     for (int i = 0; i < PROGRA; ++i) {
-        insertarL(MazoOficial, cartas[3]);
+        insertL(MazoOficial, cartas[3]);
     }
     for (int i = 0; i < ED; ++i) {
-        insertarL(MazoOficial, cartas[4]);
+        insertL(MazoOficial, cartas[4]);
     }
     for (int i = 0; i < EDD; ++i) {
-        insertarL(MazoOficial, cartas[5]);
+        insertL(MazoOficial, cartas[5]);
     }
 
 }

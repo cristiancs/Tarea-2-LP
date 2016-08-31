@@ -16,13 +16,16 @@ void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansa
 void  giveCards(struct Sansano* Jugador, void* MazoOficial){
 
     // Ordenar aleatoriamente las 20 cartas en el maso del jugador
+    int i2;
+    i2 = 0;
     for (int i = CARDSNUMBER; i > 1; --i) {
         // Numero
         int chosen = pcg32_boundedrand(i);
         // Lo metemos en el maso del jugador y lo sacamos del inicial;
         moveToPos(MazoOficial, (unsigned int) chosen);
-        insertL(Jugador->mazo, getValue(MazoOficial);
+        insertL(Jugador->mazo, getValue(MazoOficial), i2++);
         removeL(MazoOficial, chosen);
+        i2++;
     }
 
 }

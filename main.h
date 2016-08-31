@@ -12,6 +12,7 @@
 #include <string.h>
 #include "sansano.h"
 #include "CartaCurso.h"
+#include "lista.h"
 #include "libraries/pcg-c-basic-0.9/pcg_variants.h"
 
 #endif //TAREA_2_LP_MAIN_H

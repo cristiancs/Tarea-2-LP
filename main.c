@@ -13,17 +13,17 @@ int main(){
     CartaCurso* ed = malloc(sizeof(CartaCurso));
     CartaCurso* edd = malloc(sizeof(CartaCurso));
 
-    int* cartas = {mate,fisica,lp,progra,ed,edd};
+    CartaCurso* cartas[6] = {mate,fisica,lp,progra,ed,edd};
 
     char *NombreJugador = malloc(sizeof(int) * LARGONOMBREMAXIMO);
     // Iniciar El programa y pedir el nombre
     iniciarPrograma(NombreJugador, Jugador, PC);
     void* MazoOficial;
     MazoOficial = malloc(sizeof(tLista));
-    mazoOrdenado(MazoOficial,cartas);
-    giveCards(Jugador);
-    mazoOrdenado(MazoOficial,cartas);
-    giveCards(PC);
+    crearMazo(MazoOficial,cartas);
+    giveCards(Jugador, MazoOficial);
+    crearMazo(MazoOficial,cartas);
+    giveCards(PC, MazoOficial);
     free(NombreJugador);
     free(Jugador);
     free(PC);

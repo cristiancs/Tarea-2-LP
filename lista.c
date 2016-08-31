@@ -112,6 +112,7 @@ void free_linked(tLista *base){
     free(base);
 }
 
+/*
 int main(){
     tLista lista;
     initialize(&lista);
@@ -131,3 +132,4 @@ int main(){
     free_linked(&lista);
 }
 
+*/
