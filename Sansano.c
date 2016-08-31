@@ -23,7 +23,8 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial){
         int chosen = pcg32_boundedrand(i);
         // Lo metemos en el maso del jugador y lo sacamos del inicial;
         moveToPos(MazoOficial, (unsigned int) chosen);
-        insertL(Jugador->mazo, getValue(MazoOficial), i2++);
+        CartaCurso* toInsert = getValue(MazoOficial);
+        insertL(Jugador->mazo, toInsert, i2);
         removeL(MazoOficial, chosen);
         i2++;
     }

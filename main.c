@@ -21,9 +21,11 @@ int main(){
     void* MazoOficial;
     MazoOficial = malloc(sizeof(tLista));
     crearMazo(MazoOficial,cartas);
+
+//
     giveCards(Jugador, MazoOficial);
-    crearMazo(MazoOficial,cartas);
-    giveCards(PC, MazoOficial);
+//    crearMazo(MazoOficial,cartas);
+//    giveCards(PC, MazoOficial);
     free(NombreJugador);
     free(Jugador);
     free(PC);
