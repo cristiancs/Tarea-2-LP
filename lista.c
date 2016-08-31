@@ -4,7 +4,6 @@
 #include "CartaCurso.h"
 
 void initialize(tLista *lista){
-    lista = (tLista *)malloc(sizeof(tLista));
     lista->size = 0;
     lista->pos_actual = 0;
 }
@@ -16,6 +15,7 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
         lista->head->prev = NULL;
         lista->head->carta = Carta;
         lista->size++;
+        lista->current = lista->head;
     }
     else if (pos == 0){
         tNodo * aux = (tNodo *)malloc(sizeof(tNodo));
@@ -104,9 +104,12 @@ void free_linked(tLista *base){
     unsigned int i = 0;
     tNodo * aux = base->head;
     while (i < base->size){
-        aux = aux->next;
+        base->head = base->head->next;
+        free(aux);
+        aux = base->head;
         i++;
     }
+    free(base);
 }
 
 int main(){
@@ -125,5 +128,6 @@ int main(){
     removeL(&lista, 4);
     removeL(&lista, 2);
     //printf("hola");
+    free_linked(&lista);
 }
 
