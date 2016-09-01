@@ -14,8 +14,9 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
         lista->head->next = NULL;
         lista->head->prev = NULL;
         lista->head->carta = Carta;
-        lista->size++;
         lista->current = lista->head;
+        lista->pos_actual = 0;
+        lista->size++;
     }
     else if (pos == 0){
         tNodo * aux = (tNodo *)malloc(sizeof(tNodo));
@@ -24,6 +25,8 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
         aux->next->prev = aux;
         lista->head = aux;
         lista->head->carta = Carta;
+        lista->current = lista->head;
+        lista->pos_actual = 0;
         lista->size++;
     }
     else if (pos == lista->size){
@@ -65,10 +68,8 @@ void removeL(tLista *lista, unsigned int posicion){
     }
     moveToPos(lista, posicion-1);
     if (posicion == lista->size - 1){
-        lista->current = lista->current->prev;
         lista->current->next = NULL;
         lista->size--;
-        lista->pos_actual--;
     }
     else {
         tNodo * aux = lista->current->next;
@@ -79,19 +80,34 @@ void removeL(tLista *lista, unsigned int posicion){
 }
 
 void moveToPos(tLista *lista, unsigned int posicion){
-    int absoluto = posicion - lista->pos_actual;
-    if (absoluto > 0){
-        while (absoluto > 0){
+    if (posicion == 0){
+        lista->current = lista->head;
+        lista->pos_actual = 0;
+        return;
+    }
+    int relativo = posicion - lista->pos_actual;
+    if (relativo > 0){
+        while (relativo > 0){
             lista->current = lista->current->next;
             lista->pos_actual++;
-            absoluto--;
+            relativo--;
         }
     }
-    else if (absoluto < 0){
-        while (absoluto < 0){
-            lista->current = lista->current->prev;
-            lista->pos_actual--;
-            absoluto++;
+    else if (relativo < 0){
+        if (posicion < -relativo){
+            lista->current = lista->head;
+            lista->pos_actual = 0;
+            while (lista->pos_actual < posicion){
+                lista->current = lista->current->next;
+                lista->pos_actual++;
+            }
+        }
+        else {
+            while (relativo < 0) {
+                lista->current = lista->current->prev;
+                lista->pos_actual--;
+                relativo++;
+            }
         }
     }
 }
@@ -112,8 +128,7 @@ void free_linked(tLista *base){
     free(base);
 }
 
-/*
-int main(){
+/*int main(){
     tLista lista;
     initialize(&lista);
     int i = 0;
@@ -130,6 +145,6 @@ int main(){
     removeL(&lista, 2);
     //printf("hola");
     free_linked(&lista);
-}
+    return 1;
+} */
 
-*/

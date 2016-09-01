@@ -3,6 +3,7 @@
 int main(){
     // Jugadores
     struct Sansano* Jugador = malloc(sizeof(struct Sansano));
+    initialize(Jugador->mazo);
     struct Sansano* PC = malloc(sizeof(struct Sansano));
 
     // Cartas
@@ -19,7 +20,8 @@ int main(){
     // Iniciar El programa y pedir el nombre
     iniciarPrograma(NombreJugador, Jugador, PC);
     void* MazoOficial;
-    MazoOficial = malloc(sizeof(tLista));
+    MazoOficial = (tLista *)malloc(sizeof(tLista));
+    initialize(MazoOficial);
     crearMazo(MazoOficial,cartas);
 
 //
