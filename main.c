@@ -15,8 +15,49 @@ int main(){
     CartaCurso* progra = malloc(sizeof(CartaCurso));
     CartaCurso* ed = malloc(sizeof(CartaCurso));
     CartaCurso* edd = malloc(sizeof(CartaCurso));
-
     CartaCurso* cartas[6] = {mate,fisica,lp,progra,ed,edd};
+
+
+
+    mate->nombre = "Matematicas";
+    mate->descripcion = "";
+    mate->ataque = 550;
+    mate->defensa = 200;
+
+    fisica->nombre = "Fisica";
+    fisica->descripcion = "";
+    fisica->ataque = 450;
+    fisica->defensa = 150;
+
+    lp->nombre = "Lenguajes de Programación";
+    lp->descripcion = "";
+    lp->ataque = 510;
+    lp->defensa = 180;
+
+    progra->nombre = "Programación";
+    progra->descripcion = "";
+    progra->ataque = 110;
+    progra->defensa = 300;
+
+    ed->nombre = "Matematicas";
+    ed->descripcion = "";
+    ed->ataque = 470;
+    ed->defensa = 160;
+
+    edd->nombre = "Matematicas";
+    edd->descripcion = "";
+    edd->ataque = 430;
+    edd->defensa = 120;
+
+
+    for (int i = 0; i < 20; ++i) {
+        moveToPos((tLista *) Jugador->mazo, (unsigned int) i);
+        CartaCurso* nCarta= getValue((tLista *) Jugador->mazo);
+
+        printf("%s", nCarta->nombre);
+    }
+
+
 
     char *NombreJugador = malloc(sizeof(int) * LARGONOMBREMAXIMO);
     // Iniciar El programa y pedir el nombre
