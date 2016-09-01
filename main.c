@@ -30,8 +30,9 @@ int main(){
     crearMazo(MazoOficial,cartas);
     giveCards(PC, MazoOficial);
     free(NombreJugador);
-    free(Jugador->mazo);
-    free(PC->mazo);
+    free_linked(Jugador->mazo);
+    free_linked(PC->mazo);
+    free_linked(MazoOficial);
     free(Jugador);
     free(PC);
     free(mate);
