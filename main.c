@@ -3,9 +3,11 @@
 int main(){
     // Jugadores
     struct Sansano* Jugador = malloc(sizeof(struct Sansano));
+    Jugador->mazo = malloc(sizeof(tLista));
     initialize(Jugador->mazo);
     struct Sansano* PC = malloc(sizeof(struct Sansano));
-
+    PC->mazo = malloc(sizeof(tLista));
+    initialize(PC->mazo);
     // Cartas
     CartaCurso* mate = malloc(sizeof(CartaCurso));
     CartaCurso* fisica = malloc(sizeof(CartaCurso));
@@ -28,6 +30,8 @@ int main(){
     crearMazo(MazoOficial,cartas);
     giveCards(PC, MazoOficial);
     free(NombreJugador);
+    free(Jugador->mazo);
+    free(PC->mazo);
     free(Jugador);
     free(PC);
     free(mate);
