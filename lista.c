@@ -59,12 +59,20 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
 
 void removeL(tLista *lista, unsigned int posicion){
     if (posicion == 0){
-        lista->head = lista->head->next;
-        lista->head->prev = NULL;
-        lista->size--;
-        lista->current = lista->head;
-        lista->pos_actual = 0;
-        return;
+        if (lista->size == 1) {
+            lista->head = NULL;
+            lista->size--;
+            lista->current = NULL;
+            return;
+        }
+        else {
+            lista->head = lista->head->next;
+            lista->head->prev = NULL;
+            lista->size--;
+            lista->current = lista->head;
+            lista->pos_actual = 0;
+            return;
+        }
     }
     moveToPos(lista, posicion-1);
     if (posicion == lista->size - 1){

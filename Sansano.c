@@ -18,7 +18,7 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial){
     // Ordenar aleatoriamente las 20 cartas en el maso del jugador
     unsigned int i2;
     i2 = 0;
-    for (int i = CARDSNUMBER; i > 1; --i) {
+    for (int i = CARDSNUMBER; i > 0; --i) {
         // Numero
         unsigned int chosen;
         chosen = (unsigned int) pcg32_boundedrand((uint32_t) i);

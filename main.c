@@ -50,14 +50,6 @@ int main(){
     edd->defensa = 120;
 
 
-    for (int i = 0; i < 20; ++i) {
-        moveToPos((tLista *) Jugador->mazo, (unsigned int) i);
-        CartaCurso* nCarta= getValue((tLista *) Jugador->mazo);
-
-        printf("%s", nCarta->nombre);
-    }
-
-
 
     char *NombreJugador = malloc(sizeof(int) * LARGONOMBREMAXIMO);
     // Iniciar El programa y pedir el nombre
@@ -70,6 +62,14 @@ int main(){
     giveCards(Jugador, MazoOficial);
     crearMazo(MazoOficial,cartas);
     giveCards(PC, MazoOficial);
+
+    for (int i = 0; i < 20; ++i) {
+        moveToPos((tLista *) Jugador->mazo, (unsigned int) i);
+        CartaCurso* nCarta= getValue((tLista *) Jugador->mazo);
+
+        printf("%s\n", nCarta->nombre);
+    }
+
     free(NombreJugador);
     free_linked(Jugador->mazo);
     free_linked(PC->mazo);
