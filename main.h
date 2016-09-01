@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include "sansano.h"
+#include "Sansano.h"
 #include "CartaCurso.h"
 #include "lista.h"
 #include "libraries/pcg-c-basic-0.9/pcg_variants.h"
