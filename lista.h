@@ -2,6 +2,7 @@
 #ifndef _LISTA_H_INCLUDED_
 #define _LISTA_H_INCLUDED_
 #include "CartaCurso.h"
+
 typedef struct node {               // Estructura nodo de lista enlazada
 	CartaCurso *carta;
     struct node *prev;
