@@ -7,9 +7,9 @@ void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansa
     printf("Hola %s, tu prioridad inicial es de 4500\n", NombreJugador);
 
     Jugador->nombre = NombreJugador;
-    Jugador->prioridad = 4500;
+    Jugador->prioridad = 3000;
     PC->nombre = "Universidad";
-    PC->prioridad = 4500;
+    PC->prioridad = 3000;
 }
 
 
