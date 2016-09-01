@@ -5,7 +5,7 @@ void crearMazo(void * MazoOficial, CartaCurso * cartas[6]) {
 
 
     enum {MATE= 1, FISICA= 4, LP= 2, PROGRA= 6, ED= 3, EDD= 4};
-    int i2;
+    unsigned int i2;
     i2 = 0;
     for (int i = 0; i < MATE; ++i) {
         insertL(MazoOficial, cartas[0],i2);
