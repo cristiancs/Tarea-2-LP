@@ -4,7 +4,7 @@
 void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansano* PC){
     printf("Bienvenido a SansaStone, ¿Cual es su nombre? (Espacios no permitidos)\n");
     scanf("%s", NombreJugador);
-    printf("Hola %s, tu prioridad inicial es de 4500\n", NombreJugador);
+    printf("Hola %s, tu prioridad inicial es de 3000\n", NombreJugador);
 
     Jugador->nombre = NombreJugador;
     Jugador->prioridad = 3000;
