@@ -9,11 +9,12 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <time.h>
 #include <string.h>
 #include "Sansano.h"
 #include "CartaCurso.h"
 #include "lista.h"
-#include "libraries/pcg-c-basic-0.9/pcg_variants.h"
+#include "libraries/pcg-c-basic-0.9/pcg_basic.h"
 
 
 

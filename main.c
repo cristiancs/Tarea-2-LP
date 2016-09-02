@@ -1,6 +1,12 @@
 #include "main.h"
 
 int main(){
+
+    pcg32_random_t rng;
+
+    pcg32_srandom_r(&rng,(uint64_t) time(NULL) ^ (intptr_t)&printf,
+                    (uint64_t) "1");
+
     // Jugadores
     struct Sansano* Jugador = malloc(sizeof(struct Sansano));
     Jugador->mazo = malloc(sizeof(tLista));
@@ -59,9 +65,9 @@ int main(){
     initialize(MazoOficial);
     crearMazo(MazoOficial,cartas);
 
-    giveCards(Jugador, MazoOficial);
+    giveCards(Jugador, MazoOficial,rng);
     crearMazo(MazoOficial,cartas);
-    giveCards(PC, MazoOficial);
+    giveCards(PC, MazoOficial,rng);
 
     for (int i = 0; i < 20; ++i) {
         moveToPos((tLista *) Jugador->mazo, (unsigned int) i);

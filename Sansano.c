@@ -13,15 +13,16 @@ void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansa
 }
 
 
-void  giveCards(struct Sansano* Jugador, void* MazoOficial){
+void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
 
     // Ordenar aleatoriamente las 20 cartas en el maso del jugador
     unsigned int i2;
+    unsigned int chosen;
     i2 = 0;
     for (int i = CARDSNUMBER; i > 0; --i) {
         // Numero
-        unsigned int chosen;
-        chosen = (unsigned int) pcg32_boundedrand((uint32_t) i);
+        chosen = (unsigned int) pcg32_boundedrand_r(&rng,(uint32_t) i);
+        printf("%d,", (int) chosen);
         // Lo metemos en el maso del jugador y lo sacamos del inicial;
         moveToPos(MazoOficial, chosen);
         CartaCurso* toInsert;

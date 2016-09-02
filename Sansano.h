@@ -8,7 +8,7 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "libraries/pcg-c-basic-0.9/pcg_variants.h"
+#include "libraries/pcg-c-basic-0.9/pcg_basic.h"
 #include "lista.h"
 struct Sansano{
 char * nombre;
@@ -18,5 +18,5 @@ void * mazo;
 #define LARGONOMBREMAXIMO 256
 #define CARDSNUMBER 20
 void iniciarPrograma(char*, struct Sansano*, struct Sansano*);
-void giveCards(struct Sansano*, void * );
+void giveCards(struct Sansano*, void *, pcg32_random_t);
 #endif
