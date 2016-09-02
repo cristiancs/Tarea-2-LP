@@ -45,12 +45,12 @@ int main(){
     progra->ataque = 110;
     progra->defensa = 300;
 
-    ed->nombre = "Matematicas";
+    ed->nombre = "Estructura de Datos";
     ed->descripcion = "";
     ed->ataque = 470;
     ed->defensa = 160;
 
-    edd->nombre = "Matematicas";
+    edd->nombre = "Estructura Discretas";
     edd->descripcion = "";
     edd->ataque = 430;
     edd->defensa = 120;
@@ -69,12 +69,7 @@ int main(){
     crearMazo(MazoOficial,cartas);
     giveCards(PC, MazoOficial,rng);
 
-    for (int i = 0; i < 20; ++i) {
-        moveToPos((tLista *) Jugador->mazo, (unsigned int) i);
-        CartaCurso* nCarta= getValue((tLista *) Jugador->mazo);
 
-        printf("%s\n", nCarta->nombre);
-    }
 
     free(NombreJugador);
     free_linked(Jugador->mazo);
