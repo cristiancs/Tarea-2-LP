@@ -2,8 +2,6 @@
 
 #include "CartaCurso.h"
 void crearMazo(void * MazoOficial, CartaCurso * cartas[6]) {
-
-
     enum {MATE= 1, FISICA= 4, LP= 2, PROGRA= 6, ED= 3, EDD= 4};
     unsigned int i2;
     i2 = 0;
@@ -31,5 +29,4 @@ void crearMazo(void * MazoOficial, CartaCurso * cartas[6]) {
         insertL(MazoOficial, cartas[5],i2);
         i2++;
     }
-
 }

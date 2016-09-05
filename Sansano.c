@@ -14,7 +14,6 @@ void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansa
 
 
 void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
-
     // Ordenar aleatoriamente las 20 cartas en el maso del jugador
     unsigned int i2;
     unsigned int chosen;
@@ -31,5 +30,12 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
         removeL(MazoOficial, chosen);
         i2++;
     }
+}
+
+void aprobar(void *carta, void *jugador){
+
+}
+
+void reprobar(void *carta, void *jugador){
 
 }

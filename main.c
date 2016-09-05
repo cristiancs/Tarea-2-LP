@@ -23,37 +23,53 @@ int main(){
     CartaCurso* edd = malloc(sizeof(CartaCurso));
     CartaCurso* cartas[6] = {mate,fisica,lp,progra,ed,edd};
 
-
+    typedef void (*playFunction)(void *, void *);
+    playFunction aprobarFunction;
+    aprobarFunction = aprobar;
+    playFunction reprobarFunction;
+    reprobarFunction = reprobar;
 
     mate->nombre = "Matematicas";
     mate->descripcion = "";
     mate->ataque = 550;
     mate->defensa = 200;
+    mate->aprobar = aprobarFunction;
+    mate->reprobar = reprobarFunction;
 
     fisica->nombre = "Fisica";
     fisica->descripcion = "";
     fisica->ataque = 450;
     fisica->defensa = 150;
+    fisica->aprobar = aprobarFunction;
+    fisica->reprobar = reprobarFunction;
 
     lp->nombre = "Lenguajes de Programación";
     lp->descripcion = "";
     lp->ataque = 510;
     lp->defensa = 180;
+    lp->aprobar = aprobarFunction;
+    lp->reprobar = reprobarFunction;
 
     progra->nombre = "Programación";
     progra->descripcion = "";
     progra->ataque = 110;
     progra->defensa = 300;
+    progra->aprobar = aprobarFunction;
+    lp->reprobar = reprobarFunction;
 
     ed->nombre = "Estructura de Datos";
     ed->descripcion = "";
     ed->ataque = 470;
     ed->defensa = 160;
+    ed->aprobar = aprobarFunction;
+    ed->reprobar = reprobarFunction;
 
     edd->nombre = "Estructura Discretas";
     edd->descripcion = "";
     edd->ataque = 430;
     edd->defensa = 120;
+    edd->aprobar = aprobarFunction;
+    edd->reprobar = reprobarFunction;
 
 
 
