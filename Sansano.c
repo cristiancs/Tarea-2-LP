@@ -32,10 +32,10 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
     }
 }
 
-void aprobar(void *carta, void *jugador){
+void usarReprobar(void *carta, void *jugador){
 
 }
 
-void reprobar(void *carta, void *jugador){
+void usarAprobar(void *carta, void *jugador){
 
 }

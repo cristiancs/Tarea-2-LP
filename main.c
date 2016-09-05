@@ -26,9 +26,9 @@ int main(){
     // Punteros a funciones
     typedef void (*playFunction)(void *, void *);
     playFunction aprobarFunction;
-    aprobarFunction = aprobar;
+    aprobarFunction = usarAprobar;
     playFunction reprobarFunction;
-    reprobarFunction = reprobar;
+    reprobarFunction = usarReprobar;
 
     // Inicializar Cartas
     mate->nombre = "Matematicas";

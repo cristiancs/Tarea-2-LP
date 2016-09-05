@@ -19,7 +19,7 @@ void * mazo;
 #define CARDSNUMBER 20
 void iniciarPrograma(char*, struct Sansano*, struct Sansano*);
 void giveCards(struct Sansano*, void *, pcg32_random_t);
-void aprobar(void *, void *);
-void reprobar(void *, void *);
+void usarAprobar(void *, void *);
+void usarReprobar(void *, void *);
 
 #endif
