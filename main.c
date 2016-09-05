@@ -23,12 +23,14 @@ int main(){
     CartaCurso* edd = malloc(sizeof(CartaCurso));
     CartaCurso* cartas[6] = {mate,fisica,lp,progra,ed,edd};
 
+    // Punteros a funciones
     typedef void (*playFunction)(void *, void *);
     playFunction aprobarFunction;
     aprobarFunction = aprobar;
     playFunction reprobarFunction;
     reprobarFunction = reprobar;
 
+    // Inicializar Cartas
     mate->nombre = "Matematicas";
     mate->descripcion = "";
     mate->ataque = 550;

@@ -1,7 +1,5 @@
 //Archivo con funciones de lista enlazada
-#include <stdlib.h>
 #include "lista.h"
-#include "CartaCurso.h"
 
 void initialize(tLista *lista){
     lista->size = 0;
