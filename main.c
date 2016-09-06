@@ -57,7 +57,7 @@ int main(){
     progra->ataque = 110;
     progra->defensa = 300;
     progra->aprobar = aprobarFunction;
-    lp->reprobar = reprobarFunction;
+    progra->reprobar = reprobarFunction;
 
     ed->nombre = "Estructura de Datos";
     ed->descripcion = "";
@@ -98,22 +98,28 @@ int main(){
             jugar(PC, 1, Jugador, rng);
         }
         // Verificar termino del juego
-        if(Jugador->prioridad < 0){
+        if(Jugador->prioridad <= 0){
             printf("%s ha ganado el juego (Prioridad de %s es 0)\n",Jugador->nombre,PC->nombre);
             parar = 1;
         }
-        else if(PC->prioridad < 0){
+        else if(PC->prioridad <= 0){
             printf("%s ha ganado el juego (Prioridad de %s es 0)\n",PC->nombre,Jugador->nombre);
             parar = 1;
         }
     }
     // Gana el que tiene mayor prioridad
-    if(parar == 1){
-        if(PC->prioridad >= Jugador->prioridad){
+    if(parar == 0){
+        system("clear");
+        if(PC->prioridad > Jugador->prioridad){
+
             printf("%s ha ganado la partida Prioridad %d vs %d\n", PC->nombre, PC->prioridad, Jugador->prioridad);
         }
-        else{
+        else if(PC->prioridad < Jugador->prioridad){
+
             printf("%s ha ganado la partida Prioridad %d vs %d\n", Jugador->nombre, Jugador->prioridad, PC->prioridad);
+        }
+        else{
+            printf("Los jugadores empatan con una prioridad de %d",Jugador->prioridad);
         }
     }
 

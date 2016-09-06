@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include <stdlib.h>
+
 
 #include "libraries/pcg-c-basic-0.9/pcg_basic.h"
 #include "lista.h"
