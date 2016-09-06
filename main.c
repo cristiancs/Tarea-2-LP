@@ -101,10 +101,12 @@ int main(){
         if(Jugador->prioridad <= 0){
             printf("%s ha ganado el juego (Prioridad de %s es 0)\n",Jugador->nombre,PC->nombre);
             parar = 1;
+            break;
         }
         else if(PC->prioridad <= 0){
             printf("%s ha ganado el juego (Prioridad de %s es 0)\n",PC->nombre,Jugador->nombre);
             parar = 1;
+            break;
         }
     }
     // Gana el que tiene mayor prioridad
