@@ -58,13 +58,16 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
 void removeL(tLista *lista, unsigned int posicion){
     if (posicion == 0){
         if (lista->size == 1) {
+            free(lista->head);
             lista->head = NULL;
             lista->size--;
             lista->current = NULL;
             return;
         }
         else {
+            tNodo * aux = lista->head;
             lista->head = lista->head->next;
+            free(aux);
             lista->head->prev = NULL;
             lista->size--;
             lista->current = lista->head;
@@ -74,6 +77,7 @@ void removeL(tLista *lista, unsigned int posicion){
     }
     moveToPos(lista, posicion-1);
     if (posicion == lista->size - 1){
+        free(lista->current->next);
         lista->current->next = NULL;
         lista->size--;
     }
@@ -81,6 +85,7 @@ void removeL(tLista *lista, unsigned int posicion){
         tNodo * aux = lista->current->next;
         lista->current->next = aux->next;
         aux->next->prev = lista->current;
+        free(aux);
         lista->size--;
     }
 }
@@ -133,24 +138,4 @@ void free_linked(tLista *base){
     }
     free(base);
 }
-
-/*int main(){
-    tLista lista;
-    initialize(&lista);
-    int i = 0;
-    while (i<10){
-        CartaCurso * prueba = (CartaCurso *)malloc(sizeof(CartaCurso));
-        prueba->ataque = i;
-        insertL(&lista, prueba, i);
-        i++;
-    }
-    CartaCurso * prueba = (CartaCurso *)malloc(sizeof(CartaCurso));
-    prueba->ataque = 100;
-    insertL(&lista, prueba, 5);
-    removeL(&lista, 4);
-    removeL(&lista, 2);
-    //printf("hola");
-    free_linked(&lista);
-    return 1;
-} */
 
