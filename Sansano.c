@@ -72,12 +72,13 @@ int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_rand
     }
     if(opcion == 0){
         carta->reprobar(carta, enemigo);
-        printf("\"%s\" ataca %d puntos de Prioridad a \"%s\"\n",Jugador->nombre, carta->ataque, enemigo->nombre);
+        printf("\"%s\" ataca %d puntos de Prioridad a \"%s\"\n La nueva prioridad de %s es %d\n",Jugador->nombre, carta->ataque, enemigo->nombre, enemigo->nombre, enemigo->prioridad);
     }
     else if(opcion == 1){
         carta->aprobar(carta, Jugador);
-        printf("\"%s\" recupera %d puntos de Prioridad\n",Jugador->nombre, carta->defensa);
+        printf("\"%s\" recupera %d puntos de Prioridad\n La nueva prioridad de %s es %d\n",Jugador->nombre, carta->defensa, Jugador->nombre, Jugador->prioridad);
     }
     printf("-------------------------------------------\n");
+
     return 0;
 }
