@@ -57,7 +57,7 @@ int main(){
     progra->ataque = 110;
     progra->defensa = 300;
     progra->aprobar = aprobarFunction;
-    lp->reprobar = reprobarFunction;
+    progra->reprobar = reprobarFunction;
 
     ed->nombre = "Estructura de Datos";
     ed->descripcion = "";
@@ -86,6 +86,44 @@ int main(){
     giveCards(Jugador, MazoOficial,rng);
     crearMazo(MazoOficial,cartas);
     giveCards(PC, MazoOficial,rng);
+
+
+    // Comenzar el juego
+    int parar = 0;
+    for (int i = 0;i < CARDSNUMBER*2; ++i) {
+        // Jugar
+        if (i % 2 == 0) {
+            jugar(Jugador, 0, PC, rng);
+        } else {
+            jugar(PC, 1, Jugador, rng);
+        }
+        // Verificar termino del juego
+        if(Jugador->prioridad <= 0){
+            printf("%s ha ganado el juego (Prioridad de %s es 0)\n",Jugador->nombre,PC->nombre);
+            parar = 1;
+        }
+        else if(PC->prioridad <= 0){
+            printf("%s ha ganado el juego (Prioridad de %s es 0)\n",PC->nombre,Jugador->nombre);
+            parar = 1;
+        }
+    }
+    // Gana el que tiene mayor prioridad
+    if(parar == 0){
+        system("clear");
+        if(PC->prioridad > Jugador->prioridad){
+
+            printf("%s ha ganado la partida Prioridad %d vs %d\n", PC->nombre, PC->prioridad, Jugador->prioridad);
+        }
+        else if(PC->prioridad < Jugador->prioridad){
+
+            printf("%s ha ganado la partida Prioridad %d vs %d\n", Jugador->nombre, Jugador->prioridad, PC->prioridad);
+        }
+        else{
+            printf("Los jugadores empatan con una prioridad de %d",Jugador->prioridad);
+        }
+    }
+
+
 
 
 
