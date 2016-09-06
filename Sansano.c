@@ -32,11 +32,15 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
 }
 
 void usarReprobar(void *carta, void *jugador){
-
+    ((struct Sansano *)jugador)->prioridad -= ((CartaCurso *)carta)->ataque;
 }
 
 void usarAprobar(void *carta, void *jugador){
-
+    struct Sansano * player = (struct Sansano *)jugador;
+    player->prioridad += ((CartaCurso *)carta)->defensa;
+    if (player->prioridad > 4500){
+        player->prioridad = 4500;
+    }
 }
 
 int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_random_t rng){
