@@ -90,7 +90,7 @@ int main(){
 
     // Comenzar el juego
     int parar = 0;
-    for (int i = 0;i < 40; ++i) {
+    for (int i = 0;i < CARDSNUMBER*2; ++i) {
         // Jugar
         if (i % 2 == 0) {
             jugar(Jugador, 0, PC, rng);
