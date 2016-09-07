@@ -109,6 +109,7 @@ int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_rand
     else{
         // Juego automatico
         opcion = pcg32_boundedrand_r(&rng,(uint32_t) 1);
+        printf("%d", opcion);
     }
     if(tipo == 0){
         system("clear");

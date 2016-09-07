@@ -49,12 +49,12 @@ int main(){
     unsigned int ronda = 0;
     for (int i = 0;i < CARDSNUMBER*2; ++i) {
         // Verificar termino del juego
-        if(Jugador->prioridad <= 0){
+        if(PC->prioridad <= 0){
             printf("%s ha ganado el juego (Prioridad de %s es 0)\n",Jugador->nombre,PC->nombre);
             parar = 1;
             break;
         }
-        else if(PC->prioridad <= 0){
+        else if(Jugador->prioridad <= 0){
             printf("%s ha ganado el juego (Prioridad de %s es 0)\n",PC->nombre,Jugador->nombre);
             parar = 1;
             break;
