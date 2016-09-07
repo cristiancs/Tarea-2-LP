@@ -23,5 +23,5 @@ void iniciarPrograma(char*, struct Sansano*, struct Sansano*);
 void giveCards(struct Sansano*, void *, pcg32_random_t);
 void usarAprobar(void *, void *);
 void usarReprobar(void *, void *);
-int jugar(struct Sansano*, int, struct Sansano*, pcg32_random_t, unsigned int);
+int jugar(struct Sansano*, int, struct Sansano*, int[20], unsigned int);
 #endif

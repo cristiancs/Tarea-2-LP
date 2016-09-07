@@ -4,7 +4,7 @@ int main(){
     int rounds = 200;
     pcg32_random_t rng;
 
-    pcg32_srandom(time(NULL) ^ (intptr_t)&printf, (intptr_t)&rounds);
+    pcg32_srandom((uint64_t) (time(NULL) ^ (intptr_t)&printf), (intptr_t) &rounds);
 
     // Jugadores
     struct Sansano* Jugador = malloc(sizeof(struct Sansano));
@@ -16,6 +16,12 @@ int main(){
     // Cartas
     CartaCurso ** cartas = malloc(sizeof(CartaCurso *) * 6);
     crearCartas(cartas);
+
+    int opciones[40];
+    for (int j = 0; j < 40; ++j) {
+        opciones[j] = pcg32_boundedrand_r(&rng, (uint32_t) 2);
+    }
+
 
     // Punteros a funciones
     typedef void (*playFunction)(void *, void *);
@@ -61,9 +67,9 @@ int main(){
         }
         // Jugar
         if (i % 2 == 0) {
-            jugar(Jugador, 0, PC, rng, ronda);
+            jugar(Jugador, 0, PC, opciones, ronda);
         } else {
-            jugar(PC, 1, Jugador, rng, ronda);
+            jugar(PC, 1, Jugador, opciones, ronda);
             ronda++;
         }
     }

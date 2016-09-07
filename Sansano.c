@@ -87,7 +87,7 @@ n1 entero
 n2 entero
 Retorno: int
 ************************************************/
-int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_random_t rng, unsigned int ronda){
+int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, int random[20], unsigned int ronda){
     moveToPos(Jugador->mazo, ronda);
     CartaCurso * carta = getValue(Jugador->mazo);
     int opcion = -1;
@@ -108,8 +108,8 @@ int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_rand
     }
     else{
         // Juego automatico
-        opcion = pcg32_boundedrand_r(&rng,(uint32_t) 2);
-        printf("%d", opcion);
+        opcion = *(random+ronda*sizeof(int));
+        printf("%d",opcion);
     }
     if(tipo == 0){
         system("clear");
