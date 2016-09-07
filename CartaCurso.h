@@ -10,6 +10,10 @@ typedef struct CartaCurso{
 } CartaCurso;
 
 #include "lista.h"
+#include "Sansano.h"
+
 
 void crearMazo(void *, CartaCurso *[6]);
+void crearCartas(CartaCurso **);
+void freeCards(CartaCurso **);
 #endif
