@@ -1,6 +1,14 @@
 //funciones de configuracion de Sansano
 #include "Sansano.h"
 
+/******** Funcion: iniciarPrograma ********************
+Descripcion: inicializa el programa con los parametros de
+cada jugador
+Parametros:
+n1 entero
+n2 entero
+Retorno: void
+************************************************/
 void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansano* PC){
     printf("Bienvenido a SansaStone, ¿Cual es su nombre? (Espacios no permitidos)\n");
     scanf("%s", NombreJugador);
@@ -12,7 +20,14 @@ void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansa
     PC->prioridad = 3000;
 }
 
-
+/******** Funcion: giveCards ********************
+Descripcion: "reparte" las cartas del mazo oficial a el jugador
+actual de forma aleatoria
+Parametros:
+n1 entero
+n2 entero
+Retorno: void
+************************************************/
 void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
     // Ordenar aleatoriamente las 20 cartas en el maso del jugador
     unsigned int i2;
@@ -31,22 +46,47 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
     }
 }
 
+/******** Funcion: usarReprobar ********************
+Descripcion: Actualiza prioridad del jugador segun el ataque recibido
+del contrincante
+Parametros:
+n1 entero
+n2 entero
+Retorno: void
+************************************************/
 void usarReprobar(void *carta, void *jugador){
     struct Sansano * player = (struct Sansano *)jugador;
     player->prioridad -= ((CartaCurso *)carta)->ataque;
+    // Al ser menor a 0, mantener
     if (player->prioridad < 0) {
         player->prioridad = 0;
     }
 }
 
+/******** Funcion: usarAprobar ********************
+Descripcion: Actualiza prioridad del jugador segun la defensa
+de la carta utilizada
+Parametros:
+n1 entero
+n2 entero
+Retorno: void
+************************************************/
 void usarAprobar(void *carta, void *jugador){
     struct Sansano * player = (struct Sansano *)jugador;
     player->prioridad += ((CartaCurso *)carta)->defensa;
+    // No pasar prioridad maxima
     if (player->prioridad > 3000){
         player->prioridad = 3000;
     }
 }
 
+/******** Funcion: jugar ********************
+Descripcion: realiza turno de cada jugador
+Parametros:
+n1 entero
+n2 entero
+Retorno: int
+************************************************/
 int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_random_t rng, unsigned int ronda){
     moveToPos(Jugador->mazo, ronda);
     CartaCurso * carta = getValue(Jugador->mazo);
@@ -63,7 +103,6 @@ int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_rand
             printf("\"%s\" ha sacado la carta: \"%s\" [ATAQUE: %d, DEFENSA: %d]\n",Jugador->nombre, carta->nombre, carta->ataque, carta->defensa);
             printf("%d no es una opción valida\n",opcion);
             printf("Presione 0 si desea jugar la carta en modo ATAQUE o 1 si desea jugar la carta en modo DEFENSA\n");
-
             scanf("%d", &opcion);
         }
     }
@@ -83,6 +122,5 @@ int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_rand
         printf("\"%s\" recupera %d puntos de Prioridad\n La nueva prioridad de %s es %d\n",Jugador->nombre, carta->defensa, Jugador->nombre, Jugador->prioridad);
     }
     printf("-------------------------------------------\n");
-
     return 0;
 }

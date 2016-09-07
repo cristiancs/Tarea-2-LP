@@ -25,13 +25,11 @@ int main(){
     playFunction reprobarFunction;
     reprobarFunction = usarReprobar;
 
-    // Inicializar Cartas
+    // Asignar punteros a funcion en cartas
     for (unsigned int i = 0; i<6; i++){
         cartas[i]->aprobar = aprobarFunction;
         cartas[i]->reprobar = reprobarFunction;
     }
-
-
 
     char *NombreJugador = malloc(sizeof(int) * LARGONOMBREMAXIMO);
     // Iniciar El programa y pedir el nombre
@@ -39,8 +37,9 @@ int main(){
     void* MazoOficial;
     MazoOficial = (tLista *)malloc(sizeof(tLista));
     initialize(MazoOficial);
+    
+    // Crear cartas posibles y repartir a cada jugador
     crearMazo(MazoOficial,cartas);
-
     giveCards(Jugador, MazoOficial,rng);
     crearMazo(MazoOficial,cartas);
     giveCards(PC, MazoOficial,rng);
@@ -84,6 +83,7 @@ int main(){
             printf("Los jugadores empatan con una prioridad de %d",Jugador->prioridad);
         }
     }
+    // Liberar memoria
     free(NombreJugador);
     free_linked(Jugador->mazo);
     free_linked(PC->mazo);

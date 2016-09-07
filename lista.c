@@ -1,12 +1,27 @@
 //Archivo con funciones de lista enlazada
 #include "lista.h"
 
+/******** Funcion: initialize ********************
+Descripcion: inicializa parametros de la lista enlazada a 0
+Parametros:
+tLista * lista
+Retorno: void
+************************************************/
 void initialize(tLista *lista){
     lista->size = 0;
     lista->pos_actual = 0;
 }
 
+/******** Funcion: insertL ********************
+Descripcion: inserta un elemento a la lista en la posicion indicada
+Parametros:
+lista lista sobre la cual trabajar
+Carta a agregar en el nodo
+pos en la que agregar elemento
+Retorno: void
+************************************************/
 void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
+    // Caso primer elemento
     if (lista->size == 0){
         lista->head = (tNodo *)malloc(sizeof(tNodo));
         lista->head->next = NULL;
@@ -16,6 +31,8 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
         lista->pos_actual = 0;
         lista->size++;
     }
+
+    // Agregar en la cabeza
     else if (pos == 0){
         tNodo * aux = (tNodo *)malloc(sizeof(tNodo));
         aux->prev = NULL;
@@ -27,6 +44,8 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
         lista->pos_actual = 0;
         lista->size++;
     }
+
+    // Agregar en la cola
     else if (pos == lista->size){
         tNodo * aux = lista->head;
         while (aux->next != NULL){
@@ -38,6 +57,8 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
         aux->next->next = NULL;
         lista->size++;
     }
+
+    // Agregar entremedio
     else {
         unsigned int i=0;
         tNodo * actual = lista->head;
@@ -55,8 +76,18 @@ void insertL(tLista *lista, CartaCurso * Carta, unsigned int pos) {
     }
 }
 
+/******** Funcion: removeL ********************
+Descripcion: saca el elemento de la lisa en dicha posicion y
+libera la memoria ocupada por su nodo
+Parametros:
+lista tLista *
+posicion unsigned int
+Retorno: void
+************************************************/
 void removeL(tLista *lista, unsigned int posicion){
+    // Sacar de la cabeza
     if (posicion == 0){
+        // Caso ultimo elemento
         if (lista->size == 1) {
             free(lista->head);
             lista->head = NULL;
@@ -64,6 +95,7 @@ void removeL(tLista *lista, unsigned int posicion){
             lista->current = NULL;
             return;
         }
+        // Mas de un elemento - actualizar cabeza
         else {
             tNodo * aux = lista->head;
             lista->head = lista->head->next;
@@ -75,12 +107,14 @@ void removeL(tLista *lista, unsigned int posicion){
             return;
         }
     }
-    moveToPos(lista, posicion-1);
+    moveToPos(lista, posicion-1);   // Avanzar al anterior
+    // Actualizar ultimo
     if (posicion == lista->size - 1){
         free(lista->current->next);
         lista->current->next = NULL;
         lista->size--;
     }
+    // Actualizar medio
     else {
         tNodo * aux = lista->current->next;
         lista->current->next = aux->next;
@@ -90,13 +124,23 @@ void removeL(tLista *lista, unsigned int posicion){
     }
 }
 
+/******** Funcion: moveToPos ********************
+Descripcion: avanza a la posicion de la lista doble enlazada
+Parametros:
+lista tLista *
+posicion unsigned int
+Retorno: void
+************************************************/
 void moveToPos(tLista *lista, unsigned int posicion){
+    // Actualizar current a cabeza
     if (posicion == 0){
         lista->current = lista->head;
         lista->pos_actual = 0;
         return;
     }
+    // Verificar distancia segun posicion actual
     int relativo = posicion - lista->pos_actual;
+    // Avanzar o retroceder segun corresponda
     if (relativo > 0){
         while (relativo > 0){
             lista->current = lista->current->next;
@@ -105,6 +149,7 @@ void moveToPos(tLista *lista, unsigned int posicion){
         }
     }
     else if (relativo < 0){
+        // Preferir retroceder o empezar desde el inicio segun eficiencia
         if (posicion < -relativo){
             lista->current = lista->head;
             lista->pos_actual = 0;
@@ -123,10 +168,24 @@ void moveToPos(tLista *lista, unsigned int posicion){
     }
 }
 
+/******** Funcion: getValue ********************
+Descripcion: obtiene el elemento guardado en el nodo actual
+Parametros:
+n1 entero
+n2 entero
+Retorno: carta almacenada en nodo actual
+************************************************/
 CartaCurso * getValue(tLista *lista){
     return lista->current->carta;
 }
 
+/******** Funcion: free_linked ********************
+Descripcion: libera la memoria usada por la lista enlazada (mazo)
+Parametros:
+n1 entero
+n2 entero
+Retorno: void
+************************************************/
 void free_linked(tLista *base){
     unsigned int i = 0;
     tNodo * aux = base->head;
