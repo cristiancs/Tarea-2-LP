@@ -4,9 +4,12 @@
 /******** Funcion: iniciarPrograma ********************
 Descripcion: inicializa el programa con los parametros de
 cada jugador
+
 Parametros:
-n1 entero
-n2 entero
+NombreJugador string que almacena el nombre del jugador
+Jugador struct Sansano del jugador
+PC struct Sansano de la computadora
+
 Retorno: void
 ************************************************/
 void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansano* PC){
@@ -23,9 +26,12 @@ void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansa
 /******** Funcion: giveCards ********************
 Descripcion: "reparte" las cartas del mazo oficial a el jugador
 actual de forma aleatoria
+
 Parametros:
-n1 entero
-n2 entero
+Jugador struct Sansano sobre el que se desea "repartir" cartas
+MazoOficial mazo con todas las cartas posibles
+rng variable que se usa para generar el azar sobre la reparticion
+
 Retorno: void
 ************************************************/
 void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
@@ -49,9 +55,11 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
 /******** Funcion: usarReprobar ********************
 Descripcion: Actualiza prioridad del jugador segun el ataque recibido
 del contrincante
+
 Parametros:
-n1 entero
-n2 entero
+carta con la cual se esta atacando
+jugador el cual recibe el ataque correspondiente
+
 Retorno: void
 ************************************************/
 void usarReprobar(void *carta, void *jugador){
@@ -66,9 +74,11 @@ void usarReprobar(void *carta, void *jugador){
 /******** Funcion: usarAprobar ********************
 Descripcion: Actualiza prioridad del jugador segun la defensa
 de la carta utilizada
+
 Parametros:
-n1 entero
-n2 entero
+carta con la cual se esta defendiendo
+jugador el cual se esta defendiendo
+
 Retorno: void
 ************************************************/
 void usarAprobar(void *carta, void *jugador){
@@ -82,9 +92,14 @@ void usarAprobar(void *carta, void *jugador){
 
 /******** Funcion: jugar ********************
 Descripcion: realiza turno de cada jugador
+
 Parametros:
-n1 entero
-n2 entero
+Jugador cuyo turno esta en curso
+tipo representa la jugada manual (usuario) o automatica (PC) segun corresponda
+enemigo del Jugador actual
+random lista con la cual se genera el azar en la decision del PC
+ronda numero de ronda que se esta llevando a cabo
+
 Retorno: int
 ************************************************/
 int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, int random[20], unsigned int ronda){
