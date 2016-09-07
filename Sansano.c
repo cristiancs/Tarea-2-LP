@@ -20,7 +20,6 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial){
     for (int i = CARDSNUMBER; i > 0; --i) {
         // Numero
         chosen = (unsigned int) pcg32_boundedrand((uint32_t) i);
-        printf("%d,", chosen);
         // Lo metemos en el mazo del jugador y lo sacamos del inicial;
         moveToPos(MazoOficial, chosen);
         CartaCurso* toInsert;
