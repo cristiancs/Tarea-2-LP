@@ -68,32 +68,32 @@ void crearCartas(CartaCurso ** cartas){
     
     // Agregar parametros de cada una
     mate->nombre = "Matematicas";
-    mate->descripcion = "";
+    mate->descripcion = "Ataca 550/Cura 200 puntos de prioridad.";
     mate->ataque = 550;
     mate->defensa = 200;
 
     fisica->nombre = "Fisica";
-    fisica->descripcion = "";
+    fisica->descripcion = "Ataca 450/Cura 150 puntos de prioridad.";
     fisica->ataque = 450;
     fisica->defensa = 150;
 
     lp->nombre = "Lenguajes de Programación";
-    lp->descripcion = "";
+    lp->descripcion = "Ataca 510/Cura 180 puntos de prioridad.";
     lp->ataque = 510;
     lp->defensa = 180;
 
     progra->nombre = "Programación";
-    progra->descripcion = "";
+    progra->descripcion = "Ataca 110/Cura 300 puntos de prioridad.";
     progra->ataque = 110;
     progra->defensa = 300;
 
     ed->nombre = "Estructura Discretas";
-    ed->descripcion = "";
+    ed->descripcion = "Ataca 470/Cura 160 puntos de prioridad.";
     ed->ataque = 470;
     ed->defensa = 160;
 
     edd->nombre = "Estructura de Datos";
-    edd->descripcion = "";
+    edd->descripcion = "Ataca 430/Cura 120 puntos de prioridad.";
     edd->ataque = 430;
     edd->defensa = 120;
 }

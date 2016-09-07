@@ -1,11 +1,10 @@
 #include "main.h"
 
 int main(){
-
+    int rounds = 200;
     pcg32_random_t rng;
 
-    pcg32_srandom_r(&rng,(uint64_t) time(NULL) ^ (intptr_t)&printf,
-                    (uint64_t) "1");
+    pcg32_srandom(time(NULL) ^ (intptr_t)&printf, (intptr_t)&rounds);
 
     // Jugadores
     struct Sansano* Jugador = malloc(sizeof(struct Sansano));
@@ -49,13 +48,6 @@ int main(){
     int parar = 0;
     unsigned int ronda = 0;
     for (int i = 0;i < CARDSNUMBER*2; ++i) {
-        // Jugar
-        if (i % 2 == 0) {
-            jugar(Jugador, 0, PC, rng, ronda);
-        } else {
-            jugar(PC, 1, Jugador, rng, ronda);
-            ronda++;
-        }
         // Verificar termino del juego
         if(Jugador->prioridad <= 0){
             printf("%s ha ganado el juego (Prioridad de %s es 0)\n",Jugador->nombre,PC->nombre);
@@ -66,6 +58,13 @@ int main(){
             printf("%s ha ganado el juego (Prioridad de %s es 0)\n",PC->nombre,Jugador->nombre);
             parar = 1;
             break;
+        }
+        // Jugar
+        if (i % 2 == 0) {
+            jugar(Jugador, 0, PC, rng, ronda);
+        } else {
+            jugar(PC, 1, Jugador, rng, ronda);
+            ronda++;
         }
     }
     // Gana el que tiene mayor prioridad

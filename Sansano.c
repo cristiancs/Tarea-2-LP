@@ -92,7 +92,7 @@ int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_rand
     CartaCurso * carta = getValue(Jugador->mazo);
     int opcion = -1;
     printf("Turno del Jugador \"%s\" [Prioridad Actual: %d]\n", Jugador->nombre, Jugador->prioridad);
-    printf("\"%s\" ha sacado la carta: \"%s\" [ATAQUE: %d, DEFENSA: %d]\n",Jugador->nombre, carta->nombre, carta->ataque, carta->defensa);
+    printf("\"%s\" ha sacado la carta: \"%s\". Descripción: %s\n",Jugador->nombre, carta->nombre, carta->descripcion);
     if(tipo == 0){
         // Es el user
         printf("Presione 0 si desea jugar la carta en modo ATAQUE o 1 si desea jugar la carta en modo DEFENSA\n");
@@ -100,7 +100,7 @@ int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_rand
         while(opcion != 0 && opcion != 1){
             system("clear");
             printf("Turno del Jugador \"%s\" [Prioridad Actual: %d]\n", Jugador->nombre, Jugador->prioridad);
-            printf("\"%s\" ha sacado la carta: \"%s\" [ATAQUE: %d, DEFENSA: %d]\n",Jugador->nombre, carta->nombre, carta->ataque, carta->defensa);
+            printf("\"%s\" ha sacado la carta: \"%s\". Descripción: %s\n",Jugador->nombre, carta->nombre, carta->descripcion);
             printf("%d no es una opción valida\n",opcion);
             printf("Presione 0 si desea jugar la carta en modo ATAQUE o 1 si desea jugar la carta en modo DEFENSA\n");
             scanf("%d", &opcion);
