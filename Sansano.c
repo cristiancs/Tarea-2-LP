@@ -32,7 +32,11 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
 }
 
 void usarReprobar(void *carta, void *jugador){
-    ((struct Sansano *)jugador)->prioridad -= ((CartaCurso *)carta)->ataque;
+    struct Sansano * player = (struct Sansano *)jugador;
+    player->prioridad -= ((CartaCurso *)carta)->ataque;
+    if (player->prioridad < 0) {
+        player->prioridad = 0;
+    }
 }
 
 void usarAprobar(void *carta, void *jugador){
@@ -43,8 +47,8 @@ void usarAprobar(void *carta, void *jugador){
     }
 }
 
-int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_random_t rng){
-    moveToPos(Jugador->mazo, 0);
+int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, pcg32_random_t rng, unsigned int ronda){
+    moveToPos(Jugador->mazo, ronda);
     CartaCurso * carta = getValue(Jugador->mazo);
     int opcion = -1;
     printf("Turno del Jugador \"%s\" [Prioridad Actual: %d]\n", Jugador->nombre, Jugador->prioridad);

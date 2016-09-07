@@ -48,21 +48,23 @@ int main(){
 
     // Comenzar el juego
     int parar = 0;
+    unsigned int ronda = 0;
     for (int i = 0;i < CARDSNUMBER*2; ++i) {
         // Jugar
         if (i % 2 == 0) {
-            jugar(Jugador, 0, PC, rng);
+            jugar(Jugador, 0, PC, rng, ronda);
         } else {
-            jugar(PC, 1, Jugador, rng);
+            jugar(PC, 1, Jugador, rng, ronda);
+            ronda++;
         }
         // Verificar termino del juego
         if(Jugador->prioridad <= 0){
-            printf("%s ha ganado el juego (Prioridad de %s es 0)\n", PC->nombre, Jugador->nombre);
+            printf("%s ha ganado el juego (Prioridad de %s es 0)\n",Jugador->nombre,PC->nombre);
             parar = 1;
             break;
         }
         else if(PC->prioridad <= 0){
-            printf("%s ha ganado el juego (Prioridad de %s es 0)\n", Jugador->nombre, PC->nombre);
+            printf("%s ha ganado el juego (Prioridad de %s es 0)\n",PC->nombre,Jugador->nombre);
             parar = 1;
             break;
         }
@@ -82,11 +84,6 @@ int main(){
             printf("Los jugadores empatan con una prioridad de %d",Jugador->prioridad);
         }
     }
-
-
-
-
-
     free(NombreJugador);
     free_linked(Jugador->mazo);
     free_linked(PC->mazo);
