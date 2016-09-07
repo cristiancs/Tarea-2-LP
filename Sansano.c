@@ -34,14 +34,15 @@ rng variable que se usa para generar el azar sobre la reparticion
 
 Retorno: void
 ************************************************/
-void  giveCards(struct Sansano* Jugador, void* MazoOficial,pcg32_random_t rng){
+void  giveCards(struct Sansano* Jugador, void* MazoOficial){
     // Ordenar aleatoriamente las 20 cartas en el maso del jugador
     unsigned int i2;
     unsigned int chosen;
     i2 = 0;
     for (int i = CARDSNUMBER; i > 0; --i) {
         // Numero
-        chosen = (unsigned int) pcg32_boundedrand_r(&rng,(uint32_t) i);
+        chosen = (unsigned int) pcg32_boundedrand((uint32_t) i);
+        printf("%d,", chosen);
         // Lo metemos en el mazo del jugador y lo sacamos del inicial;
         moveToPos(MazoOficial, chosen);
         CartaCurso* toInsert;
@@ -102,7 +103,7 @@ ronda numero de ronda que se esta llevando a cabo
 
 Retorno: int
 ************************************************/
-int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, int random[20], unsigned int ronda){
+int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned int ronda){
     moveToPos(Jugador->mazo, ronda);
     CartaCurso * carta = getValue(Jugador->mazo);
     int opcion = -1;
@@ -123,8 +124,7 @@ int jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, int random
     }
     else{
         // Juego automatico
-        opcion = *(random+ronda*sizeof(int));
-        printf("%d",opcion);
+        opcion = pcg32_boundedrand(2);
     }
     if(tipo == 0){
         system("clear");

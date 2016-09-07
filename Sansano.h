@@ -20,8 +20,8 @@ void * mazo;
 #define LARGONOMBREMAXIMO 256
 #define CARDSNUMBER 20
 void iniciarPrograma(char*, struct Sansano*, struct Sansano*);
-void giveCards(struct Sansano*, void *, pcg32_random_t);
+void giveCards(struct Sansano*, void *);
 void usarAprobar(void *, void *);
 void usarReprobar(void *, void *);
-int jugar(struct Sansano*, int, struct Sansano*, int[20], unsigned int);
+int jugar(struct Sansano*, int, struct Sansano*, unsigned int);
 #endif

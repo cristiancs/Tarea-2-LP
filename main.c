@@ -1,10 +1,31 @@
 #include "main.h"
 
-int main(){
-    int rounds = 200;
-    pcg32_random_t rng;
+int main(int argc, char** argv){
+    int rounds = 5;
+    bool nondeterministic_seed = false;
 
-    pcg32_srandom((uint64_t) (time(NULL) ^ (intptr_t)&printf), (intptr_t) &rounds);
+    ++argv;
+    --argc;
+    if (argc > 0 && strcmp(argv[0], "-r") == 0) {
+        nondeterministic_seed = true;
+        ++argv;
+        --argc;
+    }
+    if (argc > 0) {
+        rounds = atoi(argv[0]);
+    }
+    if (nondeterministic_seed) {
+        // Seed with external entropy -- the time and some program addresses
+        // (which will actually be somewhat random on most modern systems).
+        // A better solution, entropy_getbytes, using /dev/random, is provided
+        // in the full library.
+
+        pcg32_srandom((uint64_t) (time(NULL) ^ (intptr_t)&printf), (uint64_t) (intptr_t)&rounds);
+    } else {
+        // Seed with a fixed constant
+
+        pcg32_srandom(42u, 54u);
+    }
 
     // Jugadores
     struct Sansano* Jugador = malloc(sizeof(struct Sansano));
@@ -16,12 +37,6 @@ int main(){
     // Cartas
     CartaCurso ** cartas = malloc(sizeof(CartaCurso *) * 6);
     crearCartas(cartas);
-
-    int opciones[40];
-    for (int j = 0; j < 40; ++j) {
-        opciones[j] = pcg32_boundedrand_r(&rng, (uint32_t) 2);
-    }
-
 
     // Punteros a funciones
     typedef void (*playFunction)(void *, void *);
@@ -45,9 +60,9 @@ int main(){
     
     // Crear cartas posibles y repartir a cada jugador
     crearMazo(MazoOficial,cartas);
-    giveCards(Jugador, MazoOficial,rng);
+    giveCards(Jugador, MazoOficial);
     crearMazo(MazoOficial,cartas);
-    giveCards(PC, MazoOficial,rng);
+    giveCards(PC, MazoOficial);
 
 
     // Comenzar el juego
@@ -67,9 +82,9 @@ int main(){
         }
         // Jugar
         if (i % 2 == 0) {
-            jugar(Jugador, 0, PC, opciones, ronda);
+            jugar(Jugador, 0, PC, ronda);
         } else {
-            jugar(PC, 1, Jugador, opciones, ronda);
+            jugar(PC, 1, Jugador, ronda);
             ronda++;
         }
     }

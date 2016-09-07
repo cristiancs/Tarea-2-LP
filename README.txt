@@ -3,5 +3,5 @@ Juan Pablo Jorquera Zapata       201573533-6
 Cristian Andres Navarrete Galvez 201573549-2
 
 Instrucciones:
-1. Ejecutar make
-2. Enviar ./ejecutable
+1. Ejecutar comando make
+2. Ejecutar comando ./ejecutable -r
