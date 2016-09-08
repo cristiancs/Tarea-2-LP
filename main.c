@@ -46,9 +46,10 @@ int main(int argc, char** argv){
     reprobarFunction = usarReprobar;
 
     // Asignar punteros a funcion en cartas
-    for (unsigned int i = 0; i<6; i++){
-        cartas[i]->aprobar = aprobarFunction;
-        cartas[i]->reprobar = reprobarFunction;
+    unsigned int k;
+    for (k = 0; k<6; k++){
+        cartas[k]->aprobar = aprobarFunction;
+        cartas[k]->reprobar = reprobarFunction;
     }
 
     char *NombreJugador = malloc(sizeof(int) * LARGONOMBREMAXIMO);
@@ -69,7 +70,8 @@ int main(int argc, char** argv){
     int parar = 0;
     unsigned int ronda = 0;
     unsigned int anterior = 0;
-    for (int i = 0;i < CARDSNUMBER*2; ++i) {
+    int i;
+    for (i = 0;i < CARDSNUMBER*2; ++i) {
         // Verificar termino del juego
         if(PC->prioridad <= 0){
             printf("%s ha ganado el juego (Prioridad de %s es 0)\n",Jugador->nombre,PC->nombre);
@@ -93,7 +95,6 @@ int main(int argc, char** argv){
     if(parar == 0){
         system("clear");
         if(PC->prioridad > Jugador->prioridad){
-
             printf("%s ha ganado la partida Prioridad %d vs %d\n", PC->nombre, PC->prioridad, Jugador->prioridad);
         }
         else if(PC->prioridad < Jugador->prioridad){
