@@ -57,14 +57,15 @@ void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned 
     CartaCurso * carta = getValue(Jugador->mazo);
     char white;
     int opcion = -1;
+    short estado = 0;
     printf("Turno del Jugador \"%s\" [Prioridad Actual: %d]\n", Jugador->nombre, Jugador->prioridad);
-    printf("\"%s\" ha sacado la carta: \"%s\". Descripción: %s\n",Jugador->nombre, carta->nombre, carta->descripcion);
+    printf("\"%s\" ha sacado la carta: \"%s\". \nDescripción: %s\n",Jugador->nombre, carta->nombre, carta->descripcion);
     if(tipo == 0){
         // Es el user
         printf("Presione 0 si desea jugar la carta en modo ATAQUE o 1 si desea jugar la carta en modo DEFENSA\n");
         scanf("%d", &opcion);
         while(opcion != 0 && opcion != 1){
-            printf("Esa no es una opción valida\n");
+            printf(ANSI_COLOR_RED "Esa no es una opción valida\n" ANSI_COLOR_RESET);
             printf("Presione 0 si desea jugar la carta en modo ATAQUE o 1 si desea jugar la carta en modo DEFENSA\n");
             while ((white = getchar()) != '\n');
             scanf("%d", &opcion);
@@ -79,11 +80,35 @@ void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned 
     }
     if(opcion == 0){
         carta->reprobar(carta, enemigo);
-        printf("\"%s\" ataca %d puntos de Prioridad a \"%s\"\n La nueva prioridad de %s es %d\n",Jugador->nombre, carta->ataque, enemigo->nombre, enemigo->nombre, enemigo->prioridad);
+        if (enemigo -> prioridad <= 0){
+            estado = 1;
+        }
+        printf(ANSI_COLOR_YELLOW "\"%s\" ataca %d puntos de Prioridad a \"%s\"\n La nueva prioridad de %s es %d\n" ANSI_COLOR_RESET,Jugador->nombre, carta->ataque, enemigo->nombre, enemigo->nombre, enemigo->prioridad);
     }
     else if(opcion == 1){
         carta->aprobar(carta, Jugador);
-        printf("\"%s\" recupera %d puntos de Prioridad\n La nueva prioridad de %s es %d\n",Jugador->nombre, carta->defensa, Jugador->nombre, Jugador->prioridad);
+        printf(ANSI_COLOR_CYAN "\"%s\" recupera %d puntos de Prioridad\n La nueva prioridad de %s es %d\n" ANSI_COLOR_RESET,Jugador->nombre, carta->defensa, Jugador->nombre, Jugador->prioridad);
     }
-    printf("-------------------------------------------\n");
+    restantes(ronda, 0, estado);
+}
+
+void restantes(unsigned int ronda, int actual, short status){
+    //Casos base
+        //Ya termino juego
+    if (status == 1){
+        return;
+    }
+        // Final de linea
+    if (actual == 20){
+        printf(ANSI_COLOR_RESET   "\x1b[0m""\n");
+        return;
+    }
+    // Ronda actual
+    if (actual == ronda){
+        printf(ANSI_COLOR_GREEN "[%u] ", 20-ronda);
+    }
+    else {
+        printf(ANSI_COLOR_GREEN "- ");
+    }
+    return restantes(ronda, ++actual, status);
 }

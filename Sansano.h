@@ -19,6 +19,13 @@ void * mazo;
 };
 #define LARGONOMBREMAXIMO 256
 #define CARDSNUMBER 20
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_GRAY   "\x1b[37m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 /******** Funcion: iniciarPrograma ********************
 Descripcion: inicializa el programa con los parametros de
@@ -81,4 +88,16 @@ ronda numero de ronda que se esta llevando a cabo
 Retorno: void
 ************************************************/
 void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned int ronda);
+
+/******** Funcion: restantes ********************
+Descripcion: imprime la cantidad de cartas restantes en cada mazo
+
+Parametros:
+ronda numero actual de rondas jugadas
+actual numero de guiones ya impresos
+status si ya hay ganador o no
+
+Retorno: void
+************************************************/
+void restantes(unsigned int ronda, int actual, short status);
 #endif
