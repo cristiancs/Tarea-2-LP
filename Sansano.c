@@ -2,7 +2,7 @@
 #include "Sansano.h"
 
 void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansano* PC){
-    printf("Bienvenido a SansaStone, ¿Cual es su nombre? (Espacios no permitidos)\n");
+    printf("Bienvenido a SansaStone, ¿Cual es su nombre? \n");
     fgets(NombreJugador, LARGONOMBREMAXIMO, stdin);
     size_t len = strlen(NombreJugador);
     if( NombreJugador[len-1] == '\n' ){
@@ -62,16 +62,12 @@ void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned 
     if(tipo == 0){
         // Es el user
         printf("Presione 0 si desea jugar la carta en modo ATAQUE o 1 si desea jugar la carta en modo DEFENSA\n");
-        scanf("%d\n", &opcion);
-        scanf("%c", &white);
+        scanf("%d", &opcion);
         while(opcion != 0 && opcion != 1){
-            system("clear");
-            printf("Turno del Jugador \"%s\" [Prioridad Actual: %d]\n", Jugador->nombre, Jugador->prioridad);
-            printf("\"%s\" ha sacado la carta: \"%s\". Descripción: %s\n",Jugador->nombre, carta->nombre, carta->descripcion);
             printf("Esa no es una opción valida\n");
             printf("Presione 0 si desea jugar la carta en modo ATAQUE o 1 si desea jugar la carta en modo DEFENSA\n");
+            while ((white = getchar()) != '\n');
             scanf("%d", &opcion);
-            scanf("%c", &white);
         }
     }
     else{
