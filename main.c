@@ -69,17 +69,16 @@ int main(int argc, char** argv){
     // Comenzar el juego
     int parar = 0;
     unsigned int ronda = 0;
-    unsigned int anterior = 0;
     int i;
     for (i = 0;i < CARDSNUMBER*2; ++i) {
         // Verificar termino del juego
         if(PC->prioridad <= 0){
-            printf("%s ha ganado el juego (Prioridad de %s es 0)\n",Jugador->nombre,PC->nombre);
+            printf(ANSI_COLOR_BLUE "***** %s ha ganado el juego (Prioridad de %s es 0) *****\n" ANSI_COLOR_RESET,Jugador->nombre,PC->nombre);
             parar = 1;
             break;
         }
         else if(Jugador->prioridad <= 0){
-            printf("%s ha ganado el juego (Prioridad de %s es 0)\n",PC->nombre,Jugador->nombre);
+            printf(ANSI_COLOR_BLUE "***** %s ha ganado el juego (Prioridad de %s es 0) *****\n" ANSI_COLOR_RESET,PC->nombre,Jugador->nombre);
             parar = 1;
             break;
         }
@@ -95,14 +94,14 @@ int main(int argc, char** argv){
     if(parar == 0){
         system("clear");
         if(PC->prioridad > Jugador->prioridad){
-            printf("%s ha ganado la partida Prioridad %d vs %d\n", PC->nombre, PC->prioridad, Jugador->prioridad);
+            printf(ANSI_COLOR_BLUE "***** %s ha ganado la partida Prioridad %d vs %d *****\n" ANSI_COLOR_RESET, PC->nombre, PC->prioridad, Jugador->prioridad);
         }
         else if(PC->prioridad < Jugador->prioridad){
 
-            printf("%s ha ganado la partida Prioridad %d vs %d\n", Jugador->nombre, Jugador->prioridad, PC->prioridad);
+            printf(ANSI_COLOR_BLUE "***** %s ha ganado la partida Prioridad %d vs %d *****\n" ANSI_COLOR_RESET, Jugador->nombre, Jugador->prioridad, PC->prioridad);
         }
         else{
-            printf("Los jugadores empatan con una prioridad de %d",Jugador->prioridad);
+            printf(ANSI_COLOR_BLUE "***** Los jugadores empatan con una prioridad de %d *****" ANSI_COLOR_RESET,Jugador->prioridad);
         }
     }
     // Liberar memoria

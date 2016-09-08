@@ -7,5 +7,5 @@ Instrucciones:
 2. Ejecutar comando ./ejecutable -r
 
 Comentarios:
-En caso de ser incompatibles los colores, modificar en Sansano.c o simplemente eliminar,
-ej: ANSI_COLOR_COLOR , donde los colores COLORES se encuentran en Sansano.h
+En caso de ser incompatibles los colores, modificar en Sansano.c y/o main.c o simplemente eliminar,
+ej: ANSI_COLOR_COLOR , donde los colores COLOR se encuentran en Sansano.h.
