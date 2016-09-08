@@ -3,7 +3,11 @@
 
 void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansano* PC){
     printf("Bienvenido a SansaStone, ¿Cual es su nombre? (Espacios no permitidos)\n");
-    scanf("%s", NombreJugador);
+    fgets (NombreJugador, LARGONOMBREMAXIMO, stdin);
+    size_t len = strlen(NombreJugador);
+    if( NombreJugador[len-1] == '\n' ){
+        NombreJugador[len-1] = '\0';
+    }
     system("clear");
     printf("Hola %s, tu prioridad inicial es de 3000\n", NombreJugador);
     Jugador->nombre = NombreJugador;
