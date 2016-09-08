@@ -3,7 +3,7 @@
 
 void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansano* PC){
     printf("Bienvenido a SansaStone, ¿Cual es su nombre? (Espacios no permitidos)\n");
-    fgets (NombreJugador, LARGONOMBREMAXIMO, stdin);
+    fgets(NombreJugador, LARGONOMBREMAXIMO, stdin);
     size_t len = strlen(NombreJugador);
     if( NombreJugador[len-1] == '\n' ){
         NombreJugador[len-1] = '\0';
@@ -55,20 +55,23 @@ void usarAprobar(void *carta, void *jugador){
 void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned int ronda){
     moveToPos(Jugador->mazo, ronda);
     CartaCurso * carta = getValue(Jugador->mazo);
+    char white;
     int opcion = -1;
     printf("Turno del Jugador \"%s\" [Prioridad Actual: %d]\n", Jugador->nombre, Jugador->prioridad);
     printf("\"%s\" ha sacado la carta: \"%s\". Descripción: %s\n",Jugador->nombre, carta->nombre, carta->descripcion);
     if(tipo == 0){
         // Es el user
         printf("Presione 0 si desea jugar la carta en modo ATAQUE o 1 si desea jugar la carta en modo DEFENSA\n");
-        scanf("%d", &opcion);
+        scanf("%d\n", &opcion);
+        scanf("%c", &white);
         while(opcion != 0 && opcion != 1){
             system("clear");
             printf("Turno del Jugador \"%s\" [Prioridad Actual: %d]\n", Jugador->nombre, Jugador->prioridad);
             printf("\"%s\" ha sacado la carta: \"%s\". Descripción: %s\n",Jugador->nombre, carta->nombre, carta->descripcion);
-            printf("%d no es una opción valida\n",opcion);
+            printf("Esa no es una opción valida\n");
             printf("Presione 0 si desea jugar la carta en modo ATAQUE o 1 si desea jugar la carta en modo DEFENSA\n");
             scanf("%d", &opcion);
+            scanf("%c", &white);
         }
     }
     else{
