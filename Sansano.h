@@ -24,9 +24,9 @@ void * mazo;
 #define ANSI_COLOR_YELLOW  "\x1b[33m"
 #define ANSI_COLOR_BLUE    "\x1b[34m"
 #define ANSI_COLOR_GRAY   "\x1b[37m"
+#define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 // Colores claros
-#define ANSI_COLOR_CYAN    "\x1b[1;36m"
 #define ANSI_COLOR_GREEN   "\x1b[1;32m"
 
 /******** Funcion: iniciarPrograma ********************
