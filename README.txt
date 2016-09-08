@@ -5,3 +5,7 @@ Cristian Andres Navarrete Galvez 201573549-2
 Instrucciones:
 1. Ejecutar comando make
 2. Ejecutar comando ./ejecutable -r
+
+Comentarios:
+En caso de ser incompatibles los colores, modificar en Sansano.c o simplemente eliminar,
+ej: ANSI_COLOR_COLOR , donde los colores COLORES se encuentran en Sansano.h
