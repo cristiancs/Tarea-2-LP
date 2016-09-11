@@ -111,6 +111,10 @@ void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned 
     char white;
     int opcion = -1;
     short estado = 0;
+    // Imprimir restantes primer turno
+    if (ronda == 0 && tipo == 0){
+        restantes(ronda, 0, 0);
+    }
     printf("Turno del Jugador \"%s\" [Prioridad Actual: %d]\n", Jugador->nombre, Jugador->prioridad);
     printf("\"%s\" ha sacado la carta: \"%s\". \nDescripción: %s\n",Jugador->nombre, carta->nombre, carta->descripcion);
     if(tipo == 0){
@@ -142,7 +146,7 @@ void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned 
         carta->aprobar(carta, Jugador);
         printf(ANSI_COLOR_CYAN "\"%s\" recupera %d puntos de Prioridad\n La nueva prioridad de %s es %d\n" ANSI_COLOR_RESET,Jugador->nombre, carta->defensa, Jugador->nombre, Jugador->prioridad);
     }
-    restantes(ronda, 0, estado);
+    restantes(ronda+1, 0, estado);
 }
 
 /******** Funcion: restantes ********************
