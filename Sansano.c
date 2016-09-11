@@ -113,6 +113,7 @@ void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned 
     short estado = 0;
     // Imprimir restantes primer turno
     if (ronda == 0 && tipo == 0){
+        printf(ANSI_COLOR_GREEN "Cartas restantes: \n");
         restantes(ronda, 0, 0);
     }
     printf("Turno del Jugador \"%s\" [Prioridad Actual: %d]\n", Jugador->nombre, Jugador->prioridad);
