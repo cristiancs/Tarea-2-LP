@@ -2,6 +2,16 @@
 
 #include "CartaCurso.h"
 
+/******** Funcion: crearMazo ********************
+Descripcion: crea mazo oficial con las cartas posibles,
+de donde se "reparte" a cada jugador
+
+Parametros:
+MazoOficial mazo con cartas posibles
+cartas lista de tipos de cartas
+
+Retorno: void
+************************************************/
 void crearMazo(void * MazoOficial, CartaCurso * cartas[6]) {
     enum {MATE= 1, FISICA= 4, LP= 2, PROGRA= 6, ED= 3, EDD= 4};
     unsigned int i2;
@@ -34,6 +44,15 @@ void crearMazo(void * MazoOficial, CartaCurso * cartas[6]) {
     }
 }
 
+/******** Funcion: crearCartas ********************
+Descripcion: crea en la memoria las cartas de cada tipo
+con sus respectivos parametros
+
+Parametros:
+cartas lista de cada tipo de carta posible
+
+Retorno: void
+************************************************/
 void crearCartas(CartaCurso ** cartas){
     // Asignar en heap
     CartaCurso* mate = malloc(sizeof(CartaCurso));
@@ -83,6 +102,14 @@ void crearCartas(CartaCurso ** cartas){
     edd->defensa = 120;
 }
 
+/******** Funcion: freeCards ********************
+Descripcion: libera la memoria usada por la lista de tipos cartas
+
+Parametros:
+cartas lista de cartas posibles
+
+Retorno: void
+************************************************/
 void freeCards(CartaCurso ** cartas){
     unsigned int i;
     for (i=0; i<6; i++){

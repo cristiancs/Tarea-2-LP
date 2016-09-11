@@ -1,6 +1,17 @@
 //funciones de configuracion de Sansano
 #include "Sansano.h"
 
+/******** Funcion: iniciarPrograma ********************
+Descripcion: inicializa el programa con los parametros de
+cada jugador
+
+Parametros:
+NombreJugador string que almacena el nombre del jugador
+Jugador struct Sansano del jugador
+PC struct Sansano de la computadora
+
+Retorno: void
+************************************************/
 void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansano* PC){
     printf("Bienvenido a SansaStone, ¿Cual es su nombre? \n");
     fgets(NombreJugador, LARGONOMBREMAXIMO, stdin);
@@ -16,6 +27,16 @@ void iniciarPrograma(char * NombreJugador, struct Sansano* Jugador, struct Sansa
     PC->prioridad = 3000;
 }
 
+/******** Funcion: giveCards ********************
+Descripcion: "reparte" las cartas del mazo oficial a el jugador
+actual de forma aleatoria
+
+Parametros:
+Jugador struct Sansano sobre el que se desea "repartir" cartas
+MazoOficial mazo con todas las cartas posibles
+
+Retorno: void
+************************************************/
 void  giveCards(struct Sansano* Jugador, void* MazoOficial){
     // Ordenar aleatoriamente las 20 cartas en el maso del jugador
     unsigned int i2;
@@ -35,6 +56,16 @@ void  giveCards(struct Sansano* Jugador, void* MazoOficial){
     }
 }
 
+/******** Funcion: usarReprobar ********************
+Descripcion: Actualiza prioridad del jugador segun el ataque recibido
+del contrincante
+
+Parametros:
+carta con la cual se esta atacando
+jugador el cual recibe el ataque correspondiente
+
+Retorno: void
+************************************************/
 void usarReprobar(void *carta, void *jugador){
     struct Sansano * player = (struct Sansano *)jugador;
     player->prioridad -= ((CartaCurso *)carta)->ataque;
@@ -44,6 +75,16 @@ void usarReprobar(void *carta, void *jugador){
     }
 }
 
+/******** Funcion: usarAprobar ********************
+Descripcion: Actualiza prioridad del jugador segun la defensa
+de la carta utilizada
+
+Parametros:
+carta con la cual se esta defendiendo
+jugador el cual se esta defendiendo
+
+Retorno: void
+************************************************/
 void usarAprobar(void *carta, void *jugador){
     struct Sansano * player = (struct Sansano *)jugador;
     player->prioridad += ((CartaCurso *)carta)->defensa;
@@ -53,6 +94,17 @@ void usarAprobar(void *carta, void *jugador){
     }
 }
 
+/******** Funcion: jugar ********************
+Descripcion: realiza turno de cada jugador
+
+Parametros:
+Jugador cuyo turno esta en curso
+tipo representa la jugada manual (usuario) o automatica (PC) segun corresponda
+enemigo del Jugador actual
+ronda numero de ronda que se esta llevando a cabo
+
+Retorno: void
+************************************************/
 void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned int ronda){
     moveToPos(Jugador->mazo, ronda);
     CartaCurso * carta = getValue(Jugador->mazo);
@@ -93,6 +145,16 @@ void jugar(struct Sansano* Jugador, int tipo, struct Sansano* enemigo, unsigned 
     restantes(ronda, 0, estado);
 }
 
+/******** Funcion: restantes ********************
+Descripcion: imprime la cantidad de cartas restantes en cada mazo
+
+Parametros:
+ronda numero actual de rondas jugadas
+actual numero de guiones ya impresos
+status si ya hay ganador o no
+
+Retorno: void
+************************************************/
 void restantes(unsigned int ronda, int actual, short status){
     //Casos base
         //Ya termino juego
