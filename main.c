@@ -73,12 +73,16 @@ int main(int argc, char** argv){
     for (i = 0;i < CARDSNUMBER*2; ++i) {
         // Verificar termino del juego
         if(PC->prioridad <= 0){
-            printf(ANSI_COLOR_BLUE "***** %s ha ganado el juego (Prioridad de %s es 0) *****\n" ANSI_COLOR_RESET,Jugador->nombre,PC->nombre);
+            printf(ANSI_COLOR_BLUE "*******************************************************************\n");
+            printf("***** %s ha ganado el juego (Prioridad de %s es 0) *****\n",Jugador->nombre,PC->nombre);
+            printf("*******************************************************************\n" ANSI_COLOR_RESET);
             parar = 1;
             break;
         }
         else if(Jugador->prioridad <= 0){
-            printf(ANSI_COLOR_BLUE "***** %s ha ganado el juego (Prioridad de %s es 0) *****\n" ANSI_COLOR_RESET,PC->nombre,Jugador->nombre);
+            printf(ANSI_COLOR_BLUE "*******************************************************************\n");
+            printf("***** %s ha ganado el juego (Prioridad de %s es 0) *****\n",PC->nombre,Jugador->nombre);
+            printf("*******************************************************************\n" ANSI_COLOR_RESET);
             parar = 1;
             break;
         }
