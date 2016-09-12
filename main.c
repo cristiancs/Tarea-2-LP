@@ -112,4 +112,5 @@ int main(int argc, char** argv){
     free(Jugador);
     free(PC);
     freeCards(cartas);
+    return 1;
 }
