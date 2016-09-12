@@ -92,17 +92,18 @@ int main(int argc, char** argv){
     }
     // Gana el que tiene mayor prioridad
     if(parar == 0){
-        system("clear");
+        printf(ANSI_COLOR_BLUE "*******************************************************************\n");
         if(PC->prioridad > Jugador->prioridad){
-            printf(ANSI_COLOR_BLUE "***** %s ha ganado la partida Prioridad %d vs %d *****\n" ANSI_COLOR_RESET, PC->nombre, PC->prioridad, Jugador->prioridad);
+            printf("***** %s ha ganado la partida Prioridad %d vs %d *****\n", PC->nombre, PC->prioridad, Jugador->prioridad);
         }
         else if(PC->prioridad < Jugador->prioridad){
 
-            printf(ANSI_COLOR_BLUE "***** %s ha ganado la partida Prioridad %d vs %d *****\n" ANSI_COLOR_RESET, Jugador->nombre, Jugador->prioridad, PC->prioridad);
+            printf("***** %s ha ganado la partida Prioridad %d vs %d *****\n", Jugador->nombre, Jugador->prioridad, PC->prioridad);
         }
         else{
-            printf(ANSI_COLOR_BLUE "***** Los jugadores empatan con una prioridad de %d *****" ANSI_COLOR_RESET,Jugador->prioridad);
+            printf("***** Los jugadores empatan con una prioridad de %d *****",Jugador->prioridad);
         }
+        printf(ANSI_COLOR_BLUE "*******************************************************************\n" ANSI_COLOR_RESET);
     }
     // Liberar memoria
     free(NombreJugador);
