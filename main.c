@@ -70,7 +70,6 @@ int main(int argc, char** argv){
     int parar = 0;
     unsigned int ronda = 0;
     int i;
-    short inicio = 1;
     for (i = 0;i < CARDSNUMBER*2; ++i) {
         // Verificar termino del juego
         if(PC->prioridad <= 0){
