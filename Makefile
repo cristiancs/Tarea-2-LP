@@ -1,5 +1,5 @@
 GCC=gcc
-CFLAGS=-Wall
+FLAGS=-Wall
 
 default: ejecutable
 
